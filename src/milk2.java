@@ -1,3 +1,8 @@
+/*
+ID: sairaja
+LANG: JAVA
+TASK: milk2
+ */
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -13,17 +18,18 @@ public class milk2 {
             sc.nextLine();
             items.add(new Interval(sc.nextInt(),sc.nextInt()));
         }
-        Collections.sort(items, Comparator.comparingInt(o -> o.start));
+        items.sort(Comparator.comparingInt(o -> o.start));
         for(int i = 0; i< items.size()-1; i++){
             Interval item1 = items.get(i); Interval item2 = items.get(i+1);
             if(item1.end>=item2.start){
                 items.remove(item1); items.remove(item2);
                 items.add(i, new Interval(Math.min(item1.start,item2.start),Math.max(item1.end,item2.end)));
+                i-=1;
             }
         }
         int size = items.size();
-        long longestTimeCont = -1;
-        long GapLongestIme = -1;
+        long longestTimeCont = 0;
+        long GapLongestIme = 0;
         for(int i= 0; i < size-1;i++ ){
             Interval item1 = items.get(i);
             longestTimeCont = Math.max(longestTimeCont,item1.end-item1.start);

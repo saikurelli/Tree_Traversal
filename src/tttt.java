@@ -1,9 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 public class tttt {
     public static void main(String[] args) throws FileNotFoundException {
@@ -33,41 +31,79 @@ public class tttt {
         String arr[] = {item1,item2,item3,item4, item5, item6,item7,item8};
         int onecownumbertime = 0;
         int numbertimestwocow = 0;
-        ArrayList<Character> possWInnersOneCow = new ArrayList<>();
+        ArrayList <Character> oneCow = new ArrayList<>();
+        ArrayList<String> twoCow = new ArrayList<>();
+        for(String s : arr){
+            if(s.charAt(0)== s.charAt(1) && s.charAt(1) == s.charAt(2)){
+                if(!oneCow.contains(s.charAt(0))){
+                    oneCow.add(s.charAt(0));
+                }
+            }else if(s.charAt(0)==s.charAt(2)){
+                if(s.charAt(2)> s.charAt(1)){
+                    String p = s.charAt(1)+""+s.charAt(2);
+                    twoCow.add(p);
+                }else{
+                    String p = s.charAt(2)+""+s.charAt(1);
+                    twoCow.add(p);
+                }
+            }else if(s.charAt(0) == s.charAt(1)){
+                if(s.charAt(2)> s.charAt(1)){
+                    String p = s.charAt(1)+""+s.charAt(2);
+                    twoCow.add(p);
+                }else{
+                    String p = s.charAt(2)+""+s.charAt(1);
+                    twoCow.add(p);
+                }
+            }else if(s.charAt(1)==s.charAt(2)){
+                if(s.charAt(0)> s.charAt(1)){
+                    String p = s.charAt(1)+""+s.charAt(0);
+                    twoCow.add(p);
+                }else{
+                    String p = s.charAt(0)+""+s.charAt(1);
+                    twoCow.add(p);
+                }
+            }
+        }
+        /*
+         ArrayList<Character> possWInnersOneCow = new ArrayList<>();
         HashMap<Character, Character> possWinTwo  =  new HashMap<>();
-        for (int i = 0; i < arr.length; i++) {
+        for (String s : arr) {
             //System.out.println(arr[i]);
-            String s = arr[i];
-            if(s.charAt(1)==s.charAt(0)){
+            if (s.charAt(1) == s.charAt(0)) {
                 if (s.charAt(2) == s.charAt(1)) {
                     //System.out.println(s + i);
-                    if(!possWInnersOneCow.contains(s.charAt(2))){
-                        onecownumbertime++; possWInnersOneCow.add(s.charAt(2));
+                    if (!possWInnersOneCow.contains(s.charAt(2))) {
+                        onecownumbertime++;
+                        possWInnersOneCow.add(s.charAt(2));
                     }
                     //numbertimestwocow++;
-                }else{
-                    if(!(possWinTwo.containsKey(s.charAt(2)) && possWinTwo.get(s.charAt(2))==s.charAt(1) )){
-                        numbertimestwocow++; possWinTwo.put(s.charAt(2),s.charAt(1));
+                } else {
+                    if (!(possWinTwo.containsKey(s.charAt(2)) && possWinTwo.get(s.charAt(2)) == s.charAt(1))) {
+                        numbertimestwocow++;
+                        possWinTwo.put(s.charAt(2), s.charAt(1));
                     }
 
                 }
-            }else{
-                if(s.charAt(1)==s.charAt(2) || s.charAt(2)==s.charAt(0)){
-                    if(s.charAt(1)==s.charAt(2) ){
-                    if(!(possWinTwo.containsKey(s.charAt(2)) && possWinTwo.get(s.charAt(2))==s.charAt(1) )){
-                        numbertimestwocow++; possWinTwo.put(s.charAt(2),s.charAt(1));
+            } else {
+                if (s.charAt(1) == s.charAt(2) || s.charAt(2) == s.charAt(0)) {
+                    if (s.charAt(1) == s.charAt(2)) {
+                        if (!(possWinTwo.containsKey(s.charAt(2)) && possWinTwo.get(s.charAt(2)) == s.charAt(1))) {
+                            numbertimestwocow++;
+                            possWinTwo.put(s.charAt(2), s.charAt(1));
+                        }
                     }
-                    }
-                    if( s.charAt(2)==s.charAt(0)){
-                    if(!(possWinTwo.containsKey(s.charAt(2)) && possWinTwo.get(s.charAt(2))==s.charAt(0) )){
-                        numbertimestwocow++; possWinTwo.put(s.charAt(2),s.charAt(0));
-                    }
+                    if (s.charAt(2) == s.charAt(0)) {
+                        if (!(possWinTwo.containsKey(s.charAt(2)) && possWinTwo.get(s.charAt(2)) == s.charAt(0))) {
+                            numbertimestwocow++;
+                            possWinTwo.put(s.charAt(2), s.charAt(0));
+                        }
                     }
                 }
             }
         }
-        out.println(onecownumbertime);
-        out.println(numbertimestwocow);
+         */
+        out.println(oneCow.size());
+        out.println(twoCow.size());
         out.close();
     }
 }
