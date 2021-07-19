@@ -1,2 +1,3 @@
-# Lab35bst
-Bunch Of Random Code Projects: Includes Usaco
+# Tree Traversal Algorithm
+
+Tree.java displays different orderings of Binary Trees
