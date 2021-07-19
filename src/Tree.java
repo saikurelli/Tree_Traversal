@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Lab35bst
+public class Tree
 {
     public static ArrayList<Character> operators1 = new ArrayList<>();
     public static void main(String args[])
